@@ -5,7 +5,7 @@ clean:
 lint:
 	@node_modules/.bin/eslint lib test
 test: lint
-	@node_modules/.bin/ava
+	@node_modules/.bin/ava --require "babel-core/register"
 build: clean lint
 	@node_modules/.bin/babel lib -d dist
 test-cov:

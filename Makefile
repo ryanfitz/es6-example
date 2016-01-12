@@ -7,7 +7,7 @@ lint:
 test: lint
 	@node_modules/.bin/ava
 build: clean lint
-	@node_modules/.bin/babel lib -d dist""
+	@node_modules/.bin/babel lib -d dist
 test-cov:
 	@node node_modules/lab/bin/lab -t 100
 

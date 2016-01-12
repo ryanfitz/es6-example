@@ -7,7 +7,8 @@
     "dist/"
   ],
   "scripts": {
-    "test": "ava --require 'babel-core/register'"
+    "test": "make test",
+    "prepublish": "make build"
   },
   "repository": {
     "type": "git",

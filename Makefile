@@ -9,6 +9,9 @@ test: lint
 build: clean lint
 	@node_modules/.bin/babel lib -d dist
 test-cov:
-	@node node_modules/lab/bin/lab -t 100
+	@node_modules/.bin/nyc \
+		--cache --reporter=text \
+		./node_modules/.bin/ava --require "babel-core/register"
+	@node_modules/.bin/nyc check-coverage --lines 95 --functions 95 --branches 95
 
 .PHONY: test test-cov

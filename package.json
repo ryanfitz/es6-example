@@ -15,7 +15,7 @@
     "url": "git://github.com/ryanfitz/bable-example.git"
   },
   "author": "Ryan Fitzgerald",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ryanfitz/bable-example/issues"
   },

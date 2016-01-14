@@ -1,6 +1,6 @@
 default: test
 
-BIN_DIR=$(shell npm bin)
+BIN_DIR=node_modules/.bin
 
 clean:
 	@rm -rf dist

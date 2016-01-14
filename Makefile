@@ -1,17 +1,18 @@
 default: test
 
+BIN_DIR=$(shell npm bin)
+
 clean:
 	@rm -rf dist
 lint:
-	@node_modules/.bin/eslint lib test
+	@$(BIN_DIR)/eslint lib test
 test: lint
-	@node_modules/.bin/ava --require "babel-core/register"
-build: clean lint
-	@node_modules/.bin/babel lib -d dist
+	@$(BIN_DIR)/ava --require "babel-core/register"
 test-cov:
-	@node_modules/.bin/nyc \
-		--cache --reporter=text \
-		./node_modules/.bin/ava --require "babel-core/register"
-	@node_modules/.bin/nyc check-coverage --lines 95 --functions 95 --branches 95
+	@$(BIN_DIR)/nyc --cache --reporter=text \
+		$(BIN_DIR)/ava --require "babel-core/register"
+	@$(BIN_DIR)/nyc check-coverage --lines 95 --functions 95 --branches 95
+build: clean lint
+	@$(BIN_DIR)/babel lib -d dist
 
 .PHONY: test test-cov

@@ -11,6 +11,7 @@ test: lint
 		$(BIN_DIR)/ava --require "babel-core/register"
 test-cov: test
 	@$(BIN_DIR)/nyc check-coverage --lines 95 --functions 95 --branches 95
+	@$(BIN_DIR)/nyc report
 coveralls:
 	@$(BIN_DIR)/nyc report --reporter=text-lcov | $(BIN_DIR)/coveralls
 build: clean lint

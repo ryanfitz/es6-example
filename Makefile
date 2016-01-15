@@ -7,11 +7,12 @@ clean:
 lint:
 	@$(BIN_DIR)/eslint lib test
 test: lint
-	@$(BIN_DIR)/ava --require "babel-core/register"
-test-cov:
-	@$(BIN_DIR)/nyc --cache --reporter=text \
+	@$(BIN_DIR)/nyc --cache -s \
 		$(BIN_DIR)/ava --require "babel-core/register"
+test-cov: test
 	@$(BIN_DIR)/nyc check-coverage --lines 95 --functions 95 --branches 95
+coveralls:
+	@$(BIN_DIR)/nyc report --reporter=text-lcov | $(BIN_DIR)/coveralls
 build: clean lint
 	@$(BIN_DIR)/babel lib -d dist
 
